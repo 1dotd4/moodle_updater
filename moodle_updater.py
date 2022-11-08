@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# moodle_updater.py - Send diff of moodle update on telegram channel.
+# moodle_updater.py - Send notification update of changes of moodle content on a telegram channel.
 # Copyright (c) 2022, 1dotd4 <https://github.com/1dotd4/moodle_updater>.
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -67,7 +67,7 @@ def load_list(filename):
             lines = f.read().splitlines()
             return lines
     except Exception as e:
-        print('Was not able to read ' + filename ', will try to create one.')
+        print('Was not able to read ' + filename + ', will try to create one.')
         return []
 
 def save_list(filename, new_list):
@@ -129,7 +129,7 @@ def pretty_print_diff(deltas):
 # Send to telegram channel
 def send_message(telegram_token, telegram_channel, text):
     payload = {'chat_id': telegram_channel, 'text': text}
-    r = requests.post('https://api.telegram.org/bot' + ctx.telegram_token + '/sendMessage', data=payload)
+    r = requests.post('https://api.telegram.org/bot' + telegram_token + '/sendMessage', data=payload)
     # print(r.text)
 
 # Test for diff algo
@@ -140,7 +140,6 @@ def test_diff():
 
 if __name__ == "__main__":
     # load config, halt otherwise
-    config_file = None
     parser = argparse.ArgumentParser(prog = 'moodle_updater',
                                     description = 'I watch moodle and report on telegram')
     parser.add_argument('-c', dest='config_file', help="")
