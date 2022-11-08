@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+!COPYING
+!README.md
+!moodle_updater.py
+!requirements.txt
+!your_conf.toml

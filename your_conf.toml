@@ -1,0 +1,6 @@
+save_file = "last_list_update"
+root_url = "https://your_moodle_url.org/"
+course_id = "12345"
+guest_pass = "fun"
+telegram_token = "123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11"
+telegram_channel = "-1234567890123"
